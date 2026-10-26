@@ -66,6 +66,11 @@ public class Player : MonoBehaviour
 
 
         // STEP 6 -------------------------------------------------------------
+        FloatAnimation floatAnimation = other.gameObject.GetComponent<FloatAnimation>();
+        if (floatAnimation != null)
+        {
+            floatAnimation.StopAnimation();
+        }
     }
 
     public void OnPlayerInput()
@@ -81,15 +86,15 @@ public class Player : MonoBehaviour
             {
                 case EquationType.Add:
                     // UNCOMMENT AFTER STEP 3
-                    //correct = CheckIfAdditionCorrect(number);
+                    correct = CheckIfAdditionCorrect(number);
                     break;
                 case EquationType.Subtract:
                     // UNCOMMENT AFTER STEP 4
-                    //correct = CheckIfSubtractionCorrect(number);
+                    correct = CheckIfSubtractionCorrect(number);
                     break;
                 case EquationType.Multiply:
                     // UNCOMMENT AFTER STEP 5
-                    //correct = CheckIfMultiplicationCorrect(number);
+                    correct = CheckIfMultiplicationCorrect(number);
                     break;
             }
         }
@@ -141,6 +146,10 @@ public class Player : MonoBehaviour
     // private ??? CheckIfAdditionCorrect (??? ???)
 
     // STEP 3 -----------------------------------------------------------------
+    private bool CheckIfAdditionCorrect(int number)
+    {
+        return _number1 + _number2 == number;
+    }
 
 
 
@@ -157,6 +166,10 @@ public class Player : MonoBehaviour
     // private ??? CheckIfSubtractionCorrect (??? ???)
 
     // STEP 4 -----------------------------------------------------------------
+    private bool CheckIfSubtractionCorrect(int number)
+    {
+        return _number1 - _number2 == number;
+    }
 
 
 
@@ -173,5 +186,9 @@ public class Player : MonoBehaviour
     // private ??? CheckIfMultiplicationCorrect (??? ???)
 
     // STEP 5 -----------------------------------------------------------------
+    private bool CheckIfMultiplicationCorrect(int number)
+    {
+        return _number1 * _number2 == number;
+    }
 
 }
